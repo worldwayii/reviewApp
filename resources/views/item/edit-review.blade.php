@@ -5,7 +5,7 @@
 	<div class="row">
 			<div class="col-md-12">
 				<ol class="breadcrumb">
-				  <li class="breadcrumb-item active"><a href="#">Review Page</a></li>
+				  <li class="breadcrumb-item active"><a href="{{('/')}}">View Item</a></li>
 				  <li class="breadcrumb-item"><a href="#">Edit Review</a></li>
 				</ol>
 			</div>
@@ -42,6 +42,9 @@
 						<?php $ratings = [1, 2, 3, 4, 5]; ?>
 						{{-- Hiden input that hold the item id --}}
 						<input type="hidden" name="review_id" value="{{$review->id}}">
+						<input type="hidden" name="item_id" value="{{$review->item_id}}">
+
+
 						<div class="form-group {{ ($errors->has('rating')) ? 'has-error' : ''}}">
 							<label for="rating" class="col-md-4 control-label">Rating</label>
 							<div class="col-md-6">
@@ -58,7 +61,7 @@
 						<div class="form-group {{ ($errors->has('comment')) ? 'has-error' : ''}}">
 							<label for="comment" class="col-md-4 control-label">Drop comments to back rating</label>
 							<div class="col-md-6">
-								<textarea name="comment" class="form-control" required>{{$review->comments}}</textarea>
+								<textarea name="comment" class="form-control" required>{{$review->comment}}</textarea>
 							</div>
 							@if ($errors->has('comment'))
                                 <span style="color: palevioletred; margin-top: 10%;">{{ $errors->first('comment') }}</span>

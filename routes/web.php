@@ -14,6 +14,9 @@
 //Home page route
 Route::get('/', 'HomeController@index');
 
+//documentation route
+Route::get('documentation', 'HomeController@showDocumentation');
+
 //view and item
 Route::get('item/{sku}', 'ItemController@show');
 Route::get('item/review/{sku}', 'ItemController@showReview');
@@ -24,3 +27,7 @@ Route::post('item/review/store', 'ItemController@storeReview');
 //edit a review routes
 Route::get('item/review/edit/{id}', 'ItemController@editReview');
 Route::post('item/review/update', 'ItemController@updateReview');
+
+//Add Item
+Route::get('add', 'ItemController@create');
+Route::post('add/item', 'ItemController@storeItem');

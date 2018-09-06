@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Item;
+use DB;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,8 +14,16 @@ class HomeController extends Controller
      */
     public function index()
     {
-    	$items = Item::all();
-    	// dd($items);
+    	$items = DB::table('items')->get();
     	return View('index', compact('items'));
+    }
+
+    /**
+     *
+     *
+     */
+    public function showDocumentation()
+    {
+        return View('docs');
     }
 }

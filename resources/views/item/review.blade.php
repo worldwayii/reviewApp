@@ -3,6 +3,12 @@
 @section('body')
 <div class="container">
 	<div class="row">
+		<div class="col-md-12">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item active"><a href="{{('/')}}">Home</a></li>
+            <li class="breadcrumb-item"><a href="#"> View Item</a></li>
+          </ol>
+        </div>
 		<div class="col-md-8 col-md-offset-2">
 			<div class="panel panel-default" style="margin-top: 150px;">
 				<div class="panel-heading" style="margin-bottom: 15px;">Review {{$item->name}}</div>
