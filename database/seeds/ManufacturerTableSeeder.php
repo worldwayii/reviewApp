@@ -19,12 +19,12 @@ class ManufacturerTableSeeder extends Seeder
             array(
                 'id' => '1',
                 'name' => 'Vimanco',
-                'sku' => 'vimanco/m/a1',
+                'sku' => 'vimanco-m-a1',
             ),
            array(
                 'id' => '2',
                 'name' => 'Nebosh',
-                'sku' => 'neboas/m/a2',
+                'sku' => 'neboas-m-a2',
             )
         ));
         

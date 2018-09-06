@@ -1,5 +1,5 @@
 @extends('layouts.master')
-@section('title','Create A New Item')
+@section('title','Edit Item')
 @section('body')
 <div class="container">
 	<div class="row">
@@ -24,14 +24,14 @@
                             {{Session::get('fail')}}
                         </div>
                         @endif
-					<form class="form-horizontal" method="POST" action="{{url('add/item')}}" enctype="multipart/form-data">
+					<form class="form-horizontal" method="POST" action="{{url('item/update')}}" enctype="multipart/form-data">
 						{{ csrf_field() }}
 						
-						
+						<input type="hidden" name="itemid" value="{{$item->id}}">
 						<div class="form-group {{ ($errors->has('name')) ? 'has-error' : ''}}">
 							<label for="username" class="col-md-4 control-label">Item Name</label>
 							<div class="col-md-6">
-								<input id="name" type="text" class="form-control" name="name" value="{{old('name')}}" required autofocus>
+								<input id="name" type="text" class="form-control" name="name" value="{{old('name', $item->name)}}" required autofocus>
 							</div>
 							@if ($errors->has('name'))
 	                            <span style="color: palevioletred; margin-top: 10%;">{{ $errors->first('name') }}</span>
@@ -41,7 +41,7 @@
 						<div class="form-group {{ ($errors->has('about')) ? 'has-error' : ''}}">
 							<label for="username" class="col-md-4 control-label">About Item </label>
 							<div class="col-md-6">
-								<textarea name="about" id="about" class="form-control" maxlength="99">{{old('about')}}</textarea>
+								<textarea name="about" id="about" class="form-control" maxlength="99">{{old('about', $item->about)}}</textarea>
 							</div>
 							@if ($errors->has('about'))
 	                            <span style="color: palevioletred; margin-top: 10%;">{{ $errors->first('about') }}</span>
@@ -50,7 +50,7 @@
 						<div class="form-group {{ ($errors->has('price')) ? 'has-error' : ''}}">
 							<label for="price" class="col-md-4 control-label">Price</label>
 							<div class="col-md-6">
-								<input type="number" name="price" value="{{old('price')}}" class="form-control" required>
+								<input type="number" name="price" value="{{old('price', $item->price)}}" class="form-control" required>
 							</div>
 							@if ($errors->has('price'))
                                 <span style="color: palevioletred; margin-top: 10%;">{{ $errors->first('price') }}</span>
@@ -59,20 +59,10 @@
 						<div class="form-group {{ ($errors->has('path')) ? 'has-error' : ''}}">
 							<label for="path" class="col-md-4 control-label">Item Image</label>
 							<div class="col-md-6">
-								<input type="file" name="path" class="form-control" required>
+								<input type="file" name="path" class="form-control" >
 							</div>
 							@if ($errors->has('path'))
                                 <span style="color: palevioletred; margin-top: 10%;">{{ $errors->first('path') }}</span>
-                            @endif
-						</div>
-						
-						<div class="form-group {{ ($errors->has('manufacturer')) ? 'has-error' : ''}}">
-							<label for="manufacturer" class="col-md-4 control-label">Manufacturer</label>
-							<div class="col-md-6">
-								<input id="manufacturer" type="text" class="form-control" name="manufacturer" value="{{old('manufacturer')}}" required autofocus>
-							</div>
-							@if ($errors->has('manufacturer'))
-                                <span style="color: palevioletred; margin-top: 10%;">{{ $errors->first('manufacturer') }}</span>
                             @endif
 						</div>
 						

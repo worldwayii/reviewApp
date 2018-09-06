@@ -15,7 +15,9 @@ class HomeController extends Controller
     public function index()
     {
     	$items = DB::table('items')->get();
-    	return View('index', compact('items'));
+        $itemReviews = DB::table('reviews')->get();
+        
+    	return View('index', compact('items', 'itemReviews'));
     }
 
     /**

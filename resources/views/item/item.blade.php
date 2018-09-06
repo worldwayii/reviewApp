@@ -7,7 +7,7 @@
       <ol class="breadcrumb">
         <li class="breadcrumb-item active"><a href="{{('/')}}">Home</a></li>
         <li class="breadcrumb-item"><a href="#"> View Item</a></li>
-      </ol>
+      </ol> 
     </div>
     @component('components.sidebar')
     @endcomponent
@@ -31,10 +31,14 @@
           <h3 class="card-title">{{$item->name}}</h3>
           <h4>AUD ${{$item->price}}</h4>
           <h4>Manufactured By: {{$manufacturer->name}}</h4>
-          <h4> Total Ratings: ?? </h4>
+          <h4> Total Reviews: {{$totalReview}} </h4>
           <p class="card-text">{{$item->about}}</p>
           
         </div>
+        <div class="card-footer">
+                <a href="{{url('item/delete/'.$item->sku)}}" class="btn btn-danger btn-sm" style="float: left; margin:0 0 0 2px;">Delete</a>
+                <a href="{{url('item/edit/'.$item->sku)}}" class="btn btn-success btn-sm" style="float: right; margin:0 2px 0 0;"> Edit </a>
+              </div>
       </div>
       <!-- /.card -->
       <div class="card card-outline-secondary my-4">

@@ -11,16 +11,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ItemController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
+    
     /**
      * Show the form for creating an Item.
      *
@@ -44,7 +35,7 @@ class ItemController extends Controller
         $refinedManufacturer = preg_replace('/\s+/', '', $request->manufacturer);
         
         //create a new manufacturer
-        DB::table('manufacturers')->insert(['name' => $request->manufacturer, 'sku' => $refinedManufacturer.'/m/a'.rand(1,9)]);
+        DB::table('manufacturers')->insert(['name' => $request->manufacturer, 'sku' => $refinedManufacturer.'-m-a'.rand(1,9)]);
 
         $manufacturerId = DB::table('manufacturers')->where('name', $request->manufacturer)->first();
         // store image
@@ -68,7 +59,35 @@ class ItemController extends Controller
         $item = DB::table('items')->where('sku', $sku)->first();
         $manufacturer = DB::table('manufacturers')->where('id', $item->manufacturer_id)->first();
         $reviews = DB::table('reviews')->where('item_id', $item->id)->get();
-        return view('item.item', compact('item', 'reviews', 'manufacturer'));
+        $totalReview = count($reviews);
+        return view('item.item', compact('item', 'reviews', 'manufacturer', 'totalReview'));
+    }
+
+    /**
+     * Show Item edit form
+     *
+     * @return View
+     */
+    public function showItemEdit($sku)
+    {
+        $item = DB::table('items')->where('sku', $sku)->first();
+
+        return view('item.edit-item', compact('item'));
+    }
+
+    /**
+     * Update the edited Item
+     *
+     * @param $request
+     * @return \Illuminate\Http\Request
+     */
+    public function updateItem(Request $request)
+    {
+        // dd($request->all());
+        DB::table('items')->where('id', $request->itemid)->update(['name' => $request->name, 'price' => $request->price, 'about' => $request->about]);
+
+        Session::flash('success', 'You have successfully updated and Item.');
+        return redirect('/');
     }
 
     /**
@@ -231,13 +250,43 @@ class ItemController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * Delete a specified Item.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroyItem($sku)
     {
-        //
+        $item = DB::table('items')->where('sku', $sku)->first();
+        DB::table('items')->where('id', $item->id)->delete();
+
+        Session::flash('success', 'You have just deleted an Item.');
+        return back();
+
     }
+
+    /**
+     * Show all Manufacturers
+     *
+     *
+     */
+    public function showManufacturers()
+    {
+        $manufacturers = DB::table('manufacturers')->get();
+        return view('item.manufacturers.index', compact('manufacturers'));
+    }
+
+    /**
+     * Show items by a particular manufacturer
+     *
+     * @return View
+     */
+    public function showManufacturerItems($sku)
+    {
+        $manufacturer = DB::table('manufacturers')->where('sku', $sku)->first();
+        $items = DB::table('items')->where('manufacturer_id', $manufacturer->id)->get();
+        return view('item.manufacturers.item', compact('items'));
+    }
+
+
 }

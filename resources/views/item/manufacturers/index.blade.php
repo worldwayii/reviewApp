@@ -1,4 +1,5 @@
 @extends('layouts.master')
+@section('title', 'Manufacturers')
 @section('body')
 <!-- Page Content -->
 <div class="container">
@@ -24,20 +25,19 @@
     <div class="col-lg-9">
       <div class="row" style="margin-top: 60px;">
         {{-- Loop through the item object and display all of them --}}
-        @foreach($items as $item)  
+        @foreach($manufacturers as $manufacturer)
           <div class="col-lg-4 col-md-6 mb-4">
             <div class="card h-100">
-                <a href="{{url('item/'.$item->sku)}}">
               <div class="card-body">
+                <a href="{{url('manufacturer/item/'.$manufacturer->sku)}}">
                 <h4 class="card-title">
-                  {{$item->name}}
+                  {{$manufacturer->name}}
+                
                 </h4>
-                <p class="card-text">{{$item->about}}</p>
-              </div>
                 </a>
+                
+              </div>
               <div class="card-footer">
-                <a href="{{url('item/delete/'.$item->sku)}}" class="btn btn-danger btn-sm" style="float: left; margin:0 0 0 2px;">Delete</a>
-                <a href="{{url('item/edit/'.$item->sku)}}" class="btn btn-success btn-sm" style="float: right; margin:0 2px 0 0;"> Edit </a>
               </div>
             </div>
           </div>

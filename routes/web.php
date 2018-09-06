@@ -31,3 +31,12 @@ Route::post('item/review/update', 'ItemController@updateReview');
 //Add Item
 Route::get('add', 'ItemController@create');
 Route::post('add/item', 'ItemController@storeItem');
+
+Route::get('item/edit/{sku}', 'ItemController@showItemEdit');
+Route::post('item/update', 'ItemController@updateItem');
+
+//delete an item
+Route::get('item/delete/{sku}', 'ItemController@destroyItem');
+
+Route::get('manufacturers', 'ItemController@showManufacturers');
+Route::get('manufacturer/item/{sku}', 'ItemController@showManufacturerItems');
