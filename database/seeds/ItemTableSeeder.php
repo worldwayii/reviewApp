@@ -23,52 +23,52 @@ class ItemTableSeeder extends Seeder
                 'manufacturer_id' => '1',
                 'about' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!",
                 'price' => '120',
-                'image_path' => 'public/item1'
+                'image_path' => 'public/item1.jpeg'
             ),
            array(
                 'id' => '2',
                 'name' => 'Vue Engine',
                 'sku' => 'vueengine1038',
-                'manufacturer_id' => '1',
+                'manufacturer_id' => '2',
                 'about' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!",
                 'price' => '190',
-                'image_path' => 'public/item2'
+                'image_path' => 'public/item2.jpeg'
             ),
            array(
                 'id' => '3',
                 'name' => 'Task Fixer',
                 'sku' => 'taskfixer8438',
-                'manufacturer_id' => '1',
+                'manufacturer_id' => '3',
                 'about' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!",
                 'price' => '220',
-                'image_path' => 'public/item3'
+                'image_path' => 'public/item3.jpg'
             ),
            array(
                 'id' => '4',
                 'name' => 'Tug Bolt',
                 'sku' => 'tugbolt2028',
-                'manufacturer_id' => '2',
+                'manufacturer_id' => '4',
                 'about' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!",
                 'price' => '420',
-                'image_path' => 'public/item4'
+                'image_path' => 'public/item4.jpeg'
             ),
            array(
                 'id' => '5',
                 'name' => 'Vath Engine',
                 'sku' => 'vathengine0938',
-                'manufacturer_id' => '2',
+                'manufacturer_id' => '5',
                 'about' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!",
                 'price' => '320',
-                'image_path' => 'public/item5'
+                'image_path' => 'public/item5.jpg'
             ),
            array(
                 'id' => '6',
                 'name' => 'Volt Engine',
                 'sku' => 'voltengine8594',
-                'manufacturer_id' => '2',
+                'manufacturer_id' => '6',
                 'about' => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur!",
                 'price' => '620',
-                'image_path' => 'public/item6'
+                'image_path' => 'public/item6.jpg'
             )
 
         ));

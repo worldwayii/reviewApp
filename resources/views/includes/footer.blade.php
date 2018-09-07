@@ -1,7 +1,7 @@
 <!-- Footer -->
-<footer class="py-5 bg-dark" style="position: relative; margin-top:80px; ">
+<footer class="py-5 bg-dark" id="footer-fix">
 	<div class="container">
-		<p class="m-0 text-center text-white">Copyright &copy; Nwafor Joseph 2017</p>
+		<p class="m-0 text-center text-white">Copyright &copy;  Joseph Nwafor 2017</p>
 	</div>
 	<!-- /.container -->
 </footer>

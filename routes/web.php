@@ -17,26 +17,36 @@ Route::get('/', 'HomeController@index');
 //documentation route
 Route::get('documentation', 'HomeController@showDocumentation');
 
-//view and item
-Route::get('item/{sku}', 'ItemController@show');
-Route::get('item/review/{sku}', 'ItemController@showReview');
- 
-//post review route
-Route::post('item/review/store', 'ItemController@storeReview');
-
-//edit a review routes
-Route::get('item/review/edit/{id}', 'ItemController@editReview');
-Route::post('item/review/update', 'ItemController@updateReview');
-
 //Add Item
 Route::get('add', 'ItemController@create');
 Route::post('add/item', 'ItemController@storeItem');
 
-Route::get('item/edit/{sku}', 'ItemController@showItemEdit');
-Route::post('item/update', 'ItemController@updateItem');
-
-//delete an item
-Route::get('item/delete/{sku}', 'ItemController@destroyItem');
-
 Route::get('manufacturers', 'ItemController@showManufacturers');
 Route::get('manufacturer/item/{sku}', 'ItemController@showManufacturerItems');
+
+Route::group(['prefix' => 'item'], function() {
+
+	//view and item
+	Route::get('{sku}', 'ItemController@show');
+	Route::get('review/{sku}', 'ItemController@showReview');
+	 
+	//post review route
+	Route::post('review/store', 'ItemController@storeReview');
+
+	//edit a review routes
+	Route::get('review/edit/{id}', 'ItemController@editReview');
+	Route::post('review/update', 'ItemController@updateReview');
+
+
+	Route::get('edit/{sku}', 'ItemController@showItemEdit');
+	Route::post('update', 'ItemController@updateItem');
+
+	//delete an item
+	Route::get('delete/{sku}', 'ItemController@destroyItem');
+    
+});
+
+
+Route::get('items/highly-reviewed', 'ItemController@showByDesc');
+
+Route::get('items/average-rating', 'ItemController@showAverageRating');

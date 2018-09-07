@@ -288,5 +288,30 @@ class ItemController extends Controller
         return view('item.manufacturers.item', compact('items'));
     }
 
+    /**
+     * Show items by Descending order
+     *
+     * @return view
+     */
+    public function showByDesc()
+    {
+        
+        $items = DB::table('items')
+                        ->join('reviews', 'items.id', '=', 'reviews.item_id')
+                        ->select('items.*',  DB::raw("count(reviews.item_id) as count"))
+                        ->groupBy('items.id')->orderBy('count', 'DESC')
+                        ->get();
+        return view('item.item-desc', compact('items'));
+    }
+
+    /**
+     * Show Item with highest average rating
+     *
+     * @return view
+     */
+    public function showAverageRating()
+    {
+        return view('item.item-average-rating', compact('items'));
+    }
 
 }

@@ -3,7 +3,7 @@
 @section('body')
 <div class="container">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-12" style="margin: 60px 0 0 50px;">
       <ol class="breadcrumb">
         <li class="breadcrumb-item active"><a href="{{('/')}}">Home</a></li>
         <li class="breadcrumb-item"><a href="#"> View Item</a></li>
@@ -26,7 +26,7 @@
       </div>
       @endif
       <div class="card mt-4">
-        <img class="card-img-top img-fluid" src="{{Storage::url('public/'.$item->image_path)}}" alt="">
+        <img class="card-img-top img-fluid" src="{{Storage::url($item->image_path)}}" alt="">
         <div class="card-body">
           <h3 class="card-title">{{$item->name}}</h3>
           <h4>AUD ${{$item->price}}</h4>
@@ -41,7 +41,7 @@
               </div>
       </div>
       <!-- /.card -->
-      <div class="card card-outline-secondary my-4">
+      <div class="card card-outline-secondary my-4" style="padding: 60px 0  80px 0;">
         <div class="card-header">
           Item Reviews
         </div>
